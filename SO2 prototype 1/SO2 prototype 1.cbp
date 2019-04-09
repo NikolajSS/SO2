@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="bigWords.txt" />
+		<Unit filename="global.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
