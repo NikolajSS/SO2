@@ -1,5 +1,9 @@
 # depslib dependency file v1.0
-1554732477 source:c:\users\bruger\documents\programmering\so2sorterord\main.c
+1554890756 source:c:\users\bruger\documents\programmering\so2sorterord\main.c
+	"global.h"
+
+1554802993 c:\users\bruger\documents\programmering\so2sorterord\global.h
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 

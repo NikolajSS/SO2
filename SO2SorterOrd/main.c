@@ -1,33 +1,45 @@
-#include <stdio.h>
-#include <stdlib.h>
-
+#include "global.h"
 int main()
 {
-
+    char delim[]= " ";
+    char *ptr=0;
     FILE * fPointer;
-    fPointer = fopen("fakeNews.txt", "r");
-    char singleLine[1000000];
-    int k=0;
-while (!feof(fPointer)){
-    fgets(singleLine, 1000000, fPointer);
-    printf("%s", singleLine);
-}
-	char delim[] = "\n";
-    char *word4Word[100000];
-	int i=0;
-	char *ptr = strtok(singleLine, delim);
+    fPointer = fopen("realNews.txt", "r");
+    char singleLine[150000];
+    char *unsortedWords[20000];
     int numberOfWords=0;
-while(ptr != NULL)	{
-        word4Word[i]=ptr;
-        printf("%s\n",ptr);
-		ptr = strtok(NULL, delim);
-		i++;
-		numberOfWords++;
-	}
-for (int i=0; i<numberOfWords; i++){
-    printf("%s\n", word4Word[i]);
-}
-    fclose(fPointer);
-    return 0;
+    int k=0;
+    char placeHolder[20];
 
+while (!feof(fPointer)){
+    fgets(singleLine, 150000, fPointer);
+
+}
+
+fclose(fPointer);
+    ptr = strtok(singleLine, delim);
+while (ptr!=NULL){
+        unsortedWords[k]=ptr;
+        //printf("%s ", unsortedWords[k]);
+        ptr=strtok(NULL, delim);
+        k++;
+        numberOfWords++;
+
+    }
+sort_words(unsortedWords, numberOfWords);
+fPointer = fopen("sortedRealNews.txt", "w");
+if(fPointer==NULL)
+    {
+        printf("File is not created!!!");
+        exit(0); /*exit from program*/
+    }
+    printf("%d\n", numberOfWords);
+    printf("%s\n",unsortedWords[numberOfWords+1]);
+for (int i = 0; i<numberOfWords; i++){
+strcpy(placeHolder, unsortedWords[i]);
+fprintf(fPointer, "%s", placeHolder);
+fputc(' ', fPointer);
+}
+fclose(fPointer);
+return 0;
 }

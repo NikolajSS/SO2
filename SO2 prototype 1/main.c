@@ -28,23 +28,23 @@ int main()
 		numberOfWords++;
 	}
 	///LÆSER bigWords.txt og giver dem til singleLine
-while (!feof(fPointer)){
-    fgets(singleLine, 150, fPointer);
+    while (!feof(fPointer)){
+        fgets(singleLine, 150, fPointer);
     ///tager singleLine og splitter den
-    char *ptr2 = strtok(singleLine, delim);
-    while (ptr2 != NULL){
+        char *ptr2 = strtok(singleLine, delim);
+        while (ptr2 != NULL){
 
-        bigKeyword[k]=ptr2;
-        ptr2 = strtok(NULL, delim);
-        k++;
-        numberOfBigWords++;
+            bigKeyword[k]=ptr2;
+            ptr2 = strtok(NULL, delim);
+            k++;
+            numberOfBigWords++;
+        }
     }
-}
 ///Printer det splittede fra bigWords.txt
-for (int q=0; q<12; q++){
-    printf("%s\n", bigKeyword[q]);
-}
-	fclose(fPointer);
+    for (int q=0; q<12; q++){
+        printf("%s\n", bigKeyword[q]);
+    }
+    fclose(fPointer);
 
 ///Printer strengen/titlen på artiklen
 	printf("\n");
