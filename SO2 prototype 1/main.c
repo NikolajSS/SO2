@@ -3,22 +3,16 @@
 
 int main()
 {
-	char str[] = "TRUMP SUPPORTER ATTACKED BY HILLARY ZOMBIES"; ///String to analyze
-
+	char str[] = "donald trump woman gay";
+	///String to analyze
+ptr = strtok(str, delim);
+i=0;
+numberOfWords=0;
 	///SPLIT STRING VARIABLES
-	int init_size = strlen(str);
-	char delim[] = " ";
-    char *word4Word[20]; ///Artikeltitlen, men opdelt i ord
-	int i=0;
-	char *ptr = strtok(str, delim);
-    int numberOfWords=0; ///Bliver også brugt som antal ord i strengen der skal analyseres
 
     ///LOOK AT txtFile (and split the string)
-    FILE * fPointer;
-    fPointer = fopen("bigWords.txt", "r");
-    char singleLine[1000];
-    int k=0;
-    int numberOfBigWords=0; ///Bliver også brugt som antal ord i strengen med store nøgleord
+  ;
+     ///Bliver også brugt som antal ord i strengen med store nøgleord
 
 	///ADSKILLER STRING OP I ORD OG PUTTER DEM I word4Word
 	while(ptr != NULL)	{
@@ -27,9 +21,13 @@ int main()
 		i++;
 		numberOfWords++;
 	}
+
 	///LÆSER bigWords.txt og giver dem til singleLine
+      fPointer = fopen("bigKeywords.txt", "r");
+      k=0;
+      numberOfBigWords=0;
     while (!feof(fPointer)){
-        fgets(singleLine, 150, fPointer);
+        fgets(singleLine, 6000, fPointer);
     ///tager singleLine og splitter den
         char *ptr2 = strtok(singleLine, delim);
         while (ptr2 != NULL){
@@ -41,11 +39,26 @@ int main()
         }
     }
 ///Printer det splittede fra bigWords.txt
-    for (int q=0; q<12; q++){
+    for (int q=0; q<numberOfBigWords; q++){
         printf("%s\n", bigKeyword[q]);
+        printf("am stuck\n");
     }
     fclose(fPointer);
+    fPointer = fopen("mediumKeywords.txt", "r");
+    k=0;
+    numberOfMediumWords=0;
+    while (!feof(fPointer)){
+        fgets(singleLine, 6000, fPointer);
+    ///tager singleLine og splitter den
+        char *ptr2 = strtok(singleLine, delim);
+        while (ptr2 != NULL){
 
+            bigKeyword[k]=ptr2;
+            ptr2 = strtok(NULL, delim);
+            k++;
+            numberOfBigWords++;
+        }
+    }
 ///Printer strengen/titlen på artiklen
 	printf("\n");
 	for (int i=0; i<numberOfWords; i++){
@@ -67,7 +80,7 @@ int main()
 	if (fakeNewsPoints<=3){
             ///Tjekker om mediumKeyword matcher med artiklens titel
     for (int i=0; i<numberOfWords; i++){
-       for (int j=0; j<NUMBEROFMEDIUMWORDS; j++){
+       for (int j=0; j<numberOfMediumWords; j++){
             if (strcmp(word4Word[i], mediumKeyword[j])==0){
                 fakeNewsPoints+=2;
             }
@@ -77,7 +90,7 @@ int main()
         if(fakeNewsPoints<=5){
                 ///sammenligner smallKeyword med word4Word (strengen brugt)
             for (int i=0; i<numberOfWords; i++){
-                for (int j=0; j<NUMBEROFSMALLWORDS; j++){
+                for (int j=0; j<numberOfSmallWords; j++){
                     if (strcmp(word4Word[i], smallKeyword[j])==0){
                         fakeNewsPoints+=1;
                     }

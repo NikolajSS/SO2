@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1555064464 source:c:\users\bruger\documents\programmering\so2 prototype 2\main.c
+	"global.h"
+
+1555063544 c:\users\bruger\documents\programmering\so2 prototype 2\global.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1555063655 source:c:\users\bruger\documents\programmering\so2 prototype 2\functions.c
+	"global.h"
+

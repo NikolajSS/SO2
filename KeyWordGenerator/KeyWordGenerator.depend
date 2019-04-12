@@ -7,3 +7,11 @@
 	<stdio.h>
 	<stdlib.h>
 
+1554985344 source:c:\users\bruger\documents\github\so2\keywordgenerator\main.c
+	"global.h"
+
+1554985479 c:\users\bruger\documents\github\so2\keywordgenerator\global.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
